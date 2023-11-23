@@ -1,0 +1,20 @@
+*
+!.gitignore
+!startrun.sh
+!train_srarn.sh
+!train_srarn_v5.sh
+!train_srarn_v7.sh
+!train_srarn_v8.sh
+!train_srarn_v9.sh
+!test_runtime.sh
+!runtime_batch.sh
+!test_historical.sh
+!test_historical_batch.sh
+!train_srarn_v8_commands.sh
+!train_raan.sh
+!train_alanv2.sh
+!train_dcan.sh
+!train_dcanv2.sh
+
+# Jupyter temp file
+*.ipynb_checkpoints/
