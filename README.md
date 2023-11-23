@@ -16,9 +16,15 @@ This repository is an official PyTorch implementation of the paper **"ALAN: Self
 ``` -->
 We provide scripts for reproducing all the results from our paper. You can train your model from scratch, or use a pre-trained model to enlarge your images.
 
+---
+
+![Visual comparisons of the efficient state-of-the-art models on Urban100 benchmark datasets for 4x SR. The proposed ALAN family reconstructs clean and sharp details.](figs/visual_compare.png)
+
+---
 
 > Vision Transformer (ViT)-based image super-resolution (SR) methods have achieved impressive performance and surpassed CNN-based SR methods by utilizing Multi-Head Self-Attention (MHSA) to model long-range dependencies. However, the quadratic complexity of MHSA and the inefficiency of non-parallelized window partition seriously affect the inference speed, hindering these SR methods from being applied to application scenarios requiring speed and quality. To address this issue, we propose an Asymmetric Large-kernel Attention Network (ALAN) utilizing a stage-to-block design paradigm inspired by ViT. In the ALAN, the core block named Asymmetric Large Kernel Convolution Block (ALKCB) adopts a similar structure to the Swin Transformer Layer but replaces the MHSA with our proposed Asymmetric Depth-Wise Convolution Attention (ADWCA) to enhance both the SR quality and inference speed. The proposed ADWCA, with linear complexity, uses large kernel depth-wise dilation convolution and Hadamard product as the attention map. The structural re-parameterization technique to strengthen the kernel skeletons with asymmetric convolution is also explored. Experimental results demonstrate that ALAN achieves state-of-the-art performance with faster inference speed than ViT-based models and smaller parameters than CNN-based models. Specifically, the tiny size of ALAN (ALAN-T) is $3\times$ smaller than ShuffleMixer with similar performance, and ALAN is $4\times$ faster than SwinIR-S with 0.1dB gain in PSNR.
 
+![Illustration of the proposed Asymmetric Large-kernel Attention Network (ALAN) architecture](figs/overview.png)
 
 ## Dependencies
 * Python 3.6

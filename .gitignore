@@ -93,3 +93,7 @@ srarn_v*
 src/utility_with_warmup.py
 src/params_macs_count.ipynb
 
+!figs/overview.png
+!figs/visual_compare.png
+
+
