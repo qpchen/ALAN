@@ -132,8 +132,9 @@ cd src       # You are now in */ALAN/src
 Then, you can evaluate the trained model by first switch the ACB block to the conventional convolutional block.
 
 ```bash
-# test ALAN (x4) model
+# switch ACB to CNN for trained ALAN (x4) model
 ./scripts/train_alan.sh switch 0 1 xs nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# test the trained ALAN (x4) model
 ./scripts/train_alan.sh eval 0 1 xs nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
 ```
 
