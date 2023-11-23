@@ -1,15 +1,11 @@
 #!/bin/bash
 
+# ./scripts/runtime_batch.sh "ALAN" 48 "v1xt v1t v1xs" "2 3 4" "--save_result --no_count --n_GPUs 1 --times 50"
 # ./scripts/runtime_batch.sh "RACN" 48 "no" "2 3 4" "--save_result --no_count --n_GPUs 1"
 # ./scripts/runtime_batch.sh "RACN" 48 "no" "2 3 4" "--n_GPUs 1"
 # ./scripts/runtime_batch.sh "RACN" 48 "no" "2 3 4" "--save_result --no_count --cpu"
 # ./scripts/runtime_batch.sh "LBNet LBNet-T" 48 "no" "2 3 4" "--save_result --no_count --cpu --times 3"
-# ./scripts/runtime_batch.sh "v5" 64 "fblt fbt fbxt" "2 3 4" "--save_result --no_count --cpu --times 50"
-# ./scripts/runtime_batch.sh "ALAN" 48 "v1xt v1t v1xs v1s" "2 3 4" "--save_result --no_count --n_GPUs 1 --times 50"
 # ./scripts/runtime_batch.sh "SwinIR" 64 "b t" "2 3 4" "--save_result --no_count --n_GPUs 1 --times 50"
-# ./scripts/runtime_batch.sh "DCANV1" 48 "t2" "2" "--save_result --no_count --n_GPUs 1 --times 50"
-# ./scripts/runtime_batch.sh "DCANV2" 48 "xt2 t2 b26" "2 3 4" "--save_result --no_count --n_GPUs 1 --times 50"
-# ./scripts/runtime_batch.sh "DCANV2" 48 "xt2 t2 b26" "2 3 4" "--save_result --no_count --n_GPUs 1 --times 1 --data_test Demo --dir_demo ../../dataset/historical/LR"
 
 models=($1)
 patch=$2

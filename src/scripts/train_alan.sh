@@ -1,59 +1,39 @@
 #!/bin/bash
 
 ################################################################################
-######################      SRARN V9_D1acb3 noACBnorm befln nolr 2e-4       ######################
+######################      running command       ######################
 ################################################################################
-# ./scripts/train_srarn_v9.sh [mode] [cuda_device] [accummulation_step] [model_size] [interpolation] [sr_scale] [lr_patch_size] [LR_scheduler_class] [init LR] [stage Res] [acb_norm] [upsampling]
-# run example for v9test_D1acb3_x2: ./scripts/train_srarn_v9.sh train 0 1 test b 2 48 ms skip 1acb3 batch befln nolr 2e-4
+# ./scripts/train_alan.sh [mode] [cuda_device] [accummulation_step] [model_size] [interpolation] [sr_scale] [lr_patch_size] [LR_scheduler_class] [init LR] [stage Res] [acb_norm] [upsampling]
 
-# done No1: ./scripts/train_dcan.sh train 0 1 t2 nr 2 48 ms 5e-4 useStageRes no NN noACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-# done No1: ./scripts/train_dcan.sh train 1 1 t2 nr 3 48 ms 5e-4 useStageRes no NN noACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-# done No1: ./scripts/train_dcan.sh train 2 1 t2 nr 4 48 ms 5e-4 useStageRes no NN noACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
+# ############### ALAN #################
+# saved files are under dir: ALANV2_UpNN_ACBno_StgRes_AddNr_MS_5e-4/
+# ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# ./scripts/train_alan.sh switch 1 1 t nr 3 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# ./scripts/train_alan.sh eval 1 1 t nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# ./scripts/train_alan.sh train 1 1 xt nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# ./scripts/train_alan.sh switch 0 1 xt nr 3 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# ./scripts/train_alan.sh eval 1 1 xt nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# ./scripts/train_alan.sh train 0 1 xs nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# ./scripts/train_alan.sh switch 1 1 xs nr 3 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# ./scripts/train_alan.sh eval 1 1 xs nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
 
-# done No1: ./scripts/train_dcan.sh train 2 1 t2 nr 2 48 ms 8e-4 useStageRes no NN ACB 23 LN bicubic 0 0 no SmoothL1 DIV2K_IR
-# giveup No3: ./scripts/train_dcan.sh train 1 1 t2 nr 2 48 ms 2e-3 useStageRes no NN ACB 23 LN bicubic 0 0 no SmoothL1 DIV2K_IR
-
-# done No1: ./scripts/train_dcan.sh train 3 1 t2 nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-# done No2: ./scripts/train_dcan.sh train 2 1 t2 nr 2 48 ms 5e-4 useStageRes no NN ACB 23 LN bicubic 0 0 no SmoothL1 DIV2K_IR
-# done No3: ./scripts/train_dcan.sh train 2 1 t2 nr 2 48 ms 5e-4 useStageRes batch NN ACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-# giveup No4: ./scripts/train_dcan.sh train 0 1 t2 nr 2 48 ms 5e-4 useStageRes no NN DBB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-
-# done No2: ./scripts/train_dcan.sh train 0 1 t2 nr 2 48 ms 5e-4 useStageRes no NN noACB 23 LN bicubic 0 0 no SmoothL1 DIV2K_IR
-# done No2: ./scripts/train_dcan.sh train 1 1 t2 nr 2 48 ms 5e-4 useStageRes no NN noACB 23 no bicubic 0 0 no SmoothL1 DIV2K_IR
-# giveup gradient explore at epoch 121: ./scripts/train_dcan.sh train 2 1 t2 nr 2 48 ms 5e-4 useStageRes no NN noACB 23 noAll bicubic 0 0 no SmoothL1 DIV2K_IR
-
-# done No2: ./scripts/train_dcan.sh train 3 1 t2_noAttn nr 2 48 ms 5e-4 useStageRes no NN noACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-# done No3: ./scripts/train_dcan.sh train 0 1 xs2 nr 2 48 ms 5e-4 useStageRes no NN noACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-# done: ./scripts/train_dcan.sh train 1 1 xt2 nr 2 48 ms 5e-4 useStageRes no NN noACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-# done: ./scripts/train_dcan.sh train 3 1 xt2_dep4 nr 2 48 ms 5e-4 useStageRes no NN noACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-# pause No3: ./scripts/train_dcan.sh train 1 1 xt2 nr 2 48 ms 5e-4 useStageRes no NN ACB 23 LN bicubic 0 0 no SmoothL1 DIV2K_IR
-# done No3: ./scripts/train_dcan.sh train 3 1 xt2_dep4 nr 2 48 ms 5e-4 useStageRes no NN ACB 23 LN bicubic 0 0 no SmoothL1 DIV2K_IR
-
-# giveup E2Ewave No1: ./scripts/train_dcan.sh train 3 1 t2 nr 2 48 ms 5e-4 useStageRes no NN ACB 23 LN bicubic 0 0 wave SmoothL1 DIV2K_IR
-# giveup E2Ewave No2 gradient explore at epoch 245: ./scripts/train_dcan.sh train 0 1 t2 nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 wave SmoothL1 DIV2K_IR
-# giveup No1: ./scripts/train_dcan.sh train 0 1 t2 nr 2 48 ms 5e-4 useStageRes no NN ACB 23 LN bicubic 0 0 wave SmoothL1 DIV2K_IR
-# giveup No1: ./scripts/train_dcan.sh train 1 1 t2 nr 2 96 ms 5e-4 useStageRes no NN ACB 23 LN bicubic 0 0 wavePUp SmoothL1 DIV2K_IR
-# giveup No2: ./scripts/train_dcan.sh train 0 1 t2 nr 2 48 ms 5e-4 useStageRes no NN noACB 23 LN bicubic 0 0 wave SmoothL1 DIV2K_IR
-# giveup: ./scripts/train_dcan.sh train 1 1 t2 nr 2 96 ms 5e-4 useStageRes no NN noACB 23 LN bicubic 0 0 wavePUp SmoothL1 DIV2K_IR
-# waiting: ./scripts/train_dcan.sh train 2 1 t2 nr 2 48 ms 4e-4 useStageRes no NN ACB 23 LN bicubic 0 0 no SmoothL1 DIV2K_IR
-# waiting: ./scripts/train_dcan.sh train 2 1 t2 nr 2 48 ms 2e-4 useStageRes no NN ACB 23 LN bicubic 0 0 no SmoothL1 DIV2K_IR
-# waiting: ./scripts/train_dcan.sh train 2 1 t2 nr 2 48 ms 5e-4 useStageRes no NN ACB 23 LN bicubic 0 0 no L1 DIV2K_IR
+# ############### ALAN ablation #################
+# 2. LKA size; 3. MLP ratio；4. LKA不使用attention; 5. stage、block等数量设置；6. Loss; 7. no PA
+# 2: ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 7 BN bicubic 0 0 no SmoothL1
+# 2: ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 15 BN bicubic 0 0 no SmoothL1
+# 2: ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 31 BN bicubic 0 0 no SmoothL1
+# 2: ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 39 BN bicubic 0 0 no SmoothL1
+# 2: ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 47 BN bicubic 0 0 no SmoothL1
+# 2: ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 55 BN bicubic 0 0 no SmoothL1
+# 3: ./scripts/train_alan.sh train 0 1 t_mlp2 nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# 4: ./scripts/train_alan.sh train 1 1 t_noAttn nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# 5: ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# 6: ./scripts/train_alan.sh train 1 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no L1
+# 7: ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NNnPA ACB 23 BN bicubic 0 0 no SmoothL1
 
 
-#done No4: ./scripts/train_dcan.sh train 0 1 xs2 nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-#done No9: ./scripts/train_dcan.sh train 0 1 xs2 nr 3 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-#done No5: ./scripts/train_dcan.sh train 1 1 xs2 nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-#done No3: ./scripts/train_dcan.sh train 0 1 xt2_dep4 nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-#done No3: ./scripts/train_dcan.sh train 2 1 xt2_dep4 nr 3 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-#done No3: ./scripts/train_dcan.sh train 3 1 xt2_dep4 nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-#done No5: ./scripts/train_dcan.sh resume 0 1 b2 nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-#pause No5: ./scripts/train_dcan.sh resume 1 1 b2 nr 3 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-#pause No5: ./scripts/train_dcan.sh resume 2 1 b2 nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-#done No3: ./scripts/train_dcan.sh train 1 1 t2 nr 3 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-#done No2: ./scripts/train_dcan.sh train 0 1 t2 nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1 DIV2K_IR
-#done E2Ewave_noMean No2: ./scripts/train_dcan.sh train 2 1 t2 nr 2 48 ms 5e-4 useStageRes no NN ACB 23 LN bicubic 0 0 wave SmoothL1 DIV2K_IR
 
-#done No1: ./scripts/train_dcan.sh resume 0 1 t2 nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no L1 DIV2K_IR
+
 # #####################################
 # accept input
 # first is run mode, 
@@ -71,14 +51,12 @@ if [ $size = "l" ]; then
 # ############## model_base #############
 elif [ $size = "b" ]; then
   options="--epochs 1000 --decay 500-800-900-950 --srarn_up_feat 180 --depths 6+6+6+6+6+6+6+6 --dims 180+180+180+180+180+180+180+180 --mlp_ratios 4+4+4+4+4+4+4+4 --batch_size 32"
-elif [ $size = "b2" ]; then
-  options="--epochs 1000 --decay 500-800-900-950 --srarn_up_feat 128 --depths 6+6+6+6+6+6+6+6 --dims 128+128+128+128+128+128+128+128 --mlp_ratios 4+4+4+4+4+4+4+4 --batch_size 32"
 # ############## model_small #############
 elif [ $size = "s" ]; then
   options="--epochs 1500 --decay 750-1200-1350-1425 --srarn_up_feat 60 --depths 6+6+6+6+6 --dims 60+60+60+60+60 --mlp_ratios 4+4+4+4+4 --batch_size 32"
 elif [ $size = "xs" ]; then
   options="--epochs 1500 --decay 750-1200-1350-1425 --srarn_up_feat 60 --depths 6+6+6+6 --dims 60+60+60+60 --mlp_ratios 4+4+4+4 --batch_size 32"
-elif [ $size = "xs2" ]; then
+elif [ $size = "xs4" ]; then
   options="--epochs 1500 --decay 750-1200-1350-1425 --srarn_up_feat 64 --depths 6+6+6+6 --dims 64+64+64+64 --mlp_ratios 4+4+4+4 --batch_size 32"
 # ############## model_tiny #############
 elif [ $size = "t" ]; then
@@ -87,19 +65,11 @@ elif [ $size = "t_mlp2" ]; then
   options="--epochs 2000 --decay 1000-1600-1800-1900 --srarn_up_feat 42 --depths 6+6+6 --dims 42+42+42 --mlp_ratios 2+2+2 --batch_size 32"
 elif [ $size = "t_noAttn" ]; then
   options="--epochs 2000 --decay 1000-1600-1800-1900 --srarn_up_feat 42 --depths 6+6+6 --dims 42+42+42 --mlp_ratios 4+4+4 --batch_size 32 --no_attn"
-elif [ $size = "t2" ]; then
+elif [ $size = "t4" ]; then
   options="--epochs 2000 --decay 1000-1600-1800-1900 --srarn_up_feat 48 --depths 6+6+6 --dims 48+48+48 --mlp_ratios 4+4+4 --batch_size 32"
-elif [ $size = "t2_noAttn" ]; then
-  options="--epochs 2000 --decay 1000-1600-1800-1900 --srarn_up_feat 48 --depths 6+6+6 --dims 48+48+48 --mlp_ratios 4+4+4 --batch_size 32 --no_attn"
 # ############## model_xt extremely tiny #############
 elif [ $size = "xt" ]; then
   options="--epochs 3000 --decay 1500-2400-2700-2850 --srarn_up_feat 24 --depths 6+6 --dims 24+24 --mlp_ratios 4+4 --batch_size 32"
-elif [ $size = "xt2" ]; then
-  options="--epochs 3000 --decay 1500-2400-2700-2850 --srarn_up_feat 32 --depths 5+5 --dims 32+32 --mlp_ratios 4+4 --batch_size 32"
-elif [ $size = "xt2_dep4" ]; then
-  options="--epochs 3000 --decay 1500-2400-2700-2850 --srarn_up_feat 32 --depths 4+4 --dims 32+32 --mlp_ratios 4+4 --batch_size 32"
-elif [ $size = "xt2_mlp2" ]; then
-  options="--epochs 3000 --decay 1500-2400-2700-2850 --srarn_up_feat 32 --depths 5+5 --dims 32+32 --mlp_ratios 2+2 --batch_size 32"
 elif [ $size = "xt_mlp2" ]; then
   options="--epochs 3000 --decay 1500-2400-2700-2850 --srarn_up_feat 24 --depths 6+6 --dims 24+24 --mlp_ratios 2+2 --batch_size 32"
 elif [ $size = "xt_noAttn" ]; then
@@ -291,19 +261,19 @@ if [ $quality = 0 ]; then
 else
   quality_print="_Q$quality"
 fi
-# use wavelet end-to-end, and up after (wave | wavePUp | no)
-usewave=${19}
-if [ $usewave = "wave" ]; then  # old code down first
-  usewave_opt="--use_wave"
-  usewave_print="_E2Ewave"
-elif [ $usewave = "no" ]; then 
-  usewave_opt=""
-  usewave_print=""
-elif [ $usewave = "wavePUp" ]; then
-  usewave_opt="--use_wave --wave_patchup"
-  usewave_print="_E2EwavePUp"
+# use feature down before extraction, and up after (feaDU | no)
+feaDown=${19}
+if [ $feaDown = "feaDU" ]; then  # old code down first
+  feaDown_opt="--down_fea"
+  feaDown_print="_feaDU"
+elif [ $feaDown = "no" ]; then 
+  feaDown_opt=""
+  feaDown_print=""
+elif [ $feaDown = "feaUD" ]; then
+  feaDown_opt="--down_fea"
+  feaDown_print="_feaUD"
 else
-  echo "no valid $usewave ! Please input (wave | wavePUp | no)."
+  echo "no valid $feaDown ! Please input (feaDU | feaUD | no)."
   exit
 fi
 # loss function 
@@ -313,32 +283,17 @@ if [ $loss = "SmoothL1" ]; then
 else
   loss_print="_$loss"
 fi
-# training dataset options --data_train --data_range 
-dataset=${21}
-if [ $dataset = "DIV2K_IR" ]; then
-  train="--data_train DIV2K_IR --data_range 1-900"
-  dataset_print=""
-elif [ $dataset = "DF2K" ]; then
-  train="--data_train DF2K --data_range 1-3550"
-  dataset_print="_$dataset"
-elif [ $dataset = "Flickr2K" ]; then
-  train="--data_train Flickr2K --data_range 1-2650"
-  dataset_print="_$dataset"
-fi
 
 
 # #####################################
 # prepare program options parameters
 # v9 must use layernorm
-run_command="--n_GPUs $n_device --accumulation_step $accum --scale $scale --patch_size $patch_hr $options $interpolation --acb_norm $acb $stageres_opt --upsampling $upsam_opt --loss 1*$loss --lr $initlr --n_colors 3 --optimizer ADAM --skip_threshold 1e6 --lr_class $lr_class $use_acb_opt $LKAk_opt $bb_norm_opt $usewave_opt $train --data_test $val_set $deg_opt --sigma $sigma --quality $quality --model DCAN"
-father_dir="../DCAN/v1${upsam_print}${use_acb_print}${acb_print}${stageres_print}${interpolation_print}${lr_print}${initlr_print}${dataset_print}"
-file_name="dcan_${size}${patch_print}${LKAk_print}${bb_norm_print}${usewave_print}${deg_print}${sigma_print}${quality_print}${loss_print}_x${scale}"
+run_command="--n_GPUs $n_device --accumulation_step $accum --scale $scale --patch_size $patch_hr $options $interpolation --acb_norm $acb $stageres_opt --upsampling $upsam_opt --loss 1*$loss --lr $initlr --n_colors 3 --optimizer ADAM --skip_threshold 1e6 --lr_class $lr_class $use_acb_opt $LKAk_opt $bb_norm_opt $feaDown_opt --data_train DIV2K_IR --data_test $val_set $deg_opt --sigma $sigma --quality $quality --model ALAN"
+father_dir="../ALAN${upsam_print}${use_acb_print}${acb_print}${stageres_print}${interpolation_print}${lr_print}${initlr_print}"
+file_name="v1${size}${patch_print}${LKAk_print}${bb_norm_print}${feaDown_print}${deg_print}${sigma_print}${quality_print}${loss_print}_x${scale}"
 save_dir="${father_dir}/${file_name}"
 log_file="${father_dir}/logs/${file_name}.log"
 
-if [ ! -d "../DCAN" ]; then
-  mkdir "../DCAN"
-fi
 if [ ! -d "${father_dir}" ]; then
   mkdir "${father_dir}"
 fi

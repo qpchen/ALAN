@@ -13,7 +13,7 @@ from model import acb
 from model.diversebranchblock import DiverseBranchBlock
 
 def make_model(args, parent=False):
-    return ALANV2(args)
+    return ALAN(args)
 
 class Mlp(nn.Module):
     def __init__(self, in_features, hidden_features=None, out_features=None, act_layer=nn.GELU, drop=0., use_acb=True, use_dbb=False, deploy=False, acb_norm="batch"):
@@ -287,12 +287,12 @@ class LayerNorm(nn.Module):
             x = self.weight[:, None, None] * x + self.bias[:, None, None]
             return x
 
-class ALANV2(nn.Module):
+class ALAN(nn.Module):
     # def __init__(self, img_size=224, in_chans=3, num_classes=1000, embed_dims=[64, 128, 256, 512],
     #             mlp_ratios=[4, 4, 4, 4], drop_rate=0., drop_path_rate=0., norm_layer=nn.LayerNorm,
     #              depths=[3, 4, 6, 3], num_stages=4, flag=False):
     def __init__(self, args):
-        super(ALANV2, self).__init__()
+        super(ALAN, self).__init__()
 
         img_size=args.patch_size
         in_chans=args.n_colors
