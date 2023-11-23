@@ -8,7 +8,7 @@
 # #### ./test_runtime.sh [version] [size] [scale] [patch] [times] "[addition options]"
 #########################################
 # after copy ../runtime_models/*.pt files and ../../dataset/runtime dir, run example like: 
-# ./scripts/test_runtime.sh ALAN v1xt 2 48 10 "--no_count --save_result"
+# ./scripts/test_runtime.sh ALAN v1t 2 48 10 "--no_count --save_result"
 #########################################
 
 
@@ -36,14 +36,12 @@ elif [ $2 = "base" ]; then
   dim_configs="--ShMn_feats 64 --ShMkSize 7"
 elif [ $2 = "tiny" ]; then
   dim_configs="--ShMn_feats 32 --ShMkSize 3"
-elif [ $2 = "v1xt" ]; then
-  dim_configs="--srarn_up_feat 24 --depths 6+6 --dims 24+24 --mlp_ratios 4+4"
 elif [ $2 = "v1t" ]; then
-  dim_configs="--srarn_up_feat 42 --depths 6+6+6 --dims 42+42+42 --mlp_ratios 4+4+4"
-elif [ $2 = "v1xs" ]; then
-  dim_configs="--srarn_up_feat 60 --depths 6+6+6+6 --dims 60+60+60+60 --mlp_ratios 4+4+4+4"
+  dim_configs="--srarn_up_feat 24 --depths 6+6 --dims 24+24 --mlp_ratios 4+4"
 elif [ $2 = "v1s" ]; then
-  dim_configs="--srarn_up_feat 60 --depths 6+6+6+6+6 --dims 60+60+60+60+60 --mlp_ratios 4+4+4+4+4"
+  dim_configs="--srarn_up_feat 42 --depths 6+6+6 --dims 42+42+42 --mlp_ratios 4+4+4"
+elif [ $2 = "v1b" ]; then
+  dim_configs="--srarn_up_feat 60 --depths 6+6+6+6 --dims 60+60+60+60 --mlp_ratios 4+4+4+4"
 elif [ $2 = "b26" ]; then
   dim_configs="--srarn_up_feat 128 --depths 6+6+6+6+6+6 --dims 128+128+128+128+128+128 --mlp_ratios 4+4+4+4+4+4"
 elif [ $2 = "t2" ]; then

@@ -4,7 +4,7 @@ clear all; close all; clc
 
 %% set path
 degradation = 'BI'; % BI, BD
-methods = {'alan_v1xt', 'alan_v1t', 'alan_v1xs', 'alan_v1s'};
+methods = {'alanv1_t', 'alanv1_s', 'alanv1_b'};
 %methods = {'LatticeNet'};
 dataset = {'Set5', 'Set14', 'B100', 'Urban100', 'Manga109'};
 ext = {'*.jpg', '*.png', '*.bmp'};

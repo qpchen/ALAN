@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ./scripts/test_historical_batch.sh "ALAN" 48 "v1xt v1t v1xs" "2 3 4"
+# ./scripts/test_historical_batch.sh "ALAN" 48 "v1t v1s v1b" "2 3 4"
 # ./scripts/test_historical_batch.sh "CARN DRRN EDSR-baseline LapSRN LatticeNet LBNet SwinIR" 48 "no" "2 3 4"
 # ./scripts/test_historical_batch.sh "ShuffleMixer" 64 "base" "2 3 4"
 # color is 1: ./scripts/test_historical_batch.sh "DRRN LapSRN" 48 "no" "2 3 4"

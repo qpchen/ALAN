@@ -122,27 +122,27 @@ You can train ALAN by yourself. All scripts are provided in the ``src/scripts/tr
 ```bash
 cd src       # You are now in */ALAN/src
 # train ALAN (x2) model
-./scripts/train_alan.sh train 0 1 xs nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+./scripts/train_alan.sh train 0 1 b nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
 # train ALAN (x3) model
-./scripts/train_alan.sh train 1 1 xs nr 3 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+./scripts/train_alan.sh train 1 1 b nr 3 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
 # train ALAN (x4) model
-./scripts/train_alan.sh train 1 1 xs nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+./scripts/train_alan.sh train 1 1 b nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
 ```
 
 Then, you can evaluate the trained model by first switch the ACB block to the conventional convolutional block.
 
 ```bash
 # switch ACB to CNN for trained ALAN (x4) model
-./scripts/train_alan.sh switch 0 1 xs nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+./scripts/train_alan.sh switch 0 1 b nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
 # test the trained ALAN (x4) model
-./scripts/train_alan.sh eval 0 1 xs nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+./scripts/train_alan.sh eval 0 1 b nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
 ```
 
 You can also do lam analysis for the scale 4 models.
 
 ```bash
 # do LAM analysis on ALAN (x4) model
-./scripts/train_alan.sh lam 0 1 xs nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+./scripts/train_alan.sh lam 0 1 b nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
 ```
 
 ## Citation

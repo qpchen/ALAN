@@ -7,31 +7,31 @@
 
 # ############### ALAN #################
 # saved files are under dir: ALANV2_UpNN_ACBno_StgRes_AddNr_MS_5e-4/
-# ./scripts/train_alan.sh train 1 1 xt nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
-# ./scripts/train_alan.sh switch 0 1 xt nr 3 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
-# ./scripts/train_alan.sh eval 1 1 xt nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# ./scripts/train_alan.sh train 1 1 t nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# ./scripts/train_alan.sh switch 0 1 t nr 3 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# ./scripts/train_alan.sh eval 1 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
 
-# ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
-# ./scripts/train_alan.sh switch 1 1 t nr 3 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
-# ./scripts/train_alan.sh eval 1 1 t nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# ./scripts/train_alan.sh train 0 1 s nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# ./scripts/train_alan.sh switch 1 1 s nr 3 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# ./scripts/train_alan.sh eval 1 1 s nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
 
-# ./scripts/train_alan.sh train 0 1 xs nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
-# ./scripts/train_alan.sh switch 1 1 xs nr 3 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
-# ./scripts/train_alan.sh eval 1 1 xs nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# ./scripts/train_alan.sh train 0 1 b nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# ./scripts/train_alan.sh switch 1 1 b nr 3 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# ./scripts/train_alan.sh eval 1 1 b nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
 
 # ############### ALAN ablation #################
 # 2. LKA size; 3. MLP ratio；4. LKA不使用attention; 5. stage、block等数量设置；6. Loss; 7. no PA
-# 2: ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 7 BN bicubic 0 0 no SmoothL1
-# 2: ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 15 BN bicubic 0 0 no SmoothL1
-# 2: ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 31 BN bicubic 0 0 no SmoothL1
-# 2: ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 39 BN bicubic 0 0 no SmoothL1
-# 2: ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 47 BN bicubic 0 0 no SmoothL1
-# 2: ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 55 BN bicubic 0 0 no SmoothL1
-# 3: ./scripts/train_alan.sh train 0 1 t_mlp2 nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
-# 4: ./scripts/train_alan.sh train 1 1 t_noAttn nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
-# 5: ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
-# 6: ./scripts/train_alan.sh train 1 1 t nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no L1
-# 7: ./scripts/train_alan.sh train 0 1 t nr 2 48 ms 5e-4 useStageRes no NNnPA ACB 23 BN bicubic 0 0 no SmoothL1
+# 2: ./scripts/train_alan.sh train 0 1 s nr 2 48 ms 5e-4 useStageRes no NN ACB 7 BN bicubic 0 0 no SmoothL1
+# 2: ./scripts/train_alan.sh train 0 1 s nr 2 48 ms 5e-4 useStageRes no NN ACB 15 BN bicubic 0 0 no SmoothL1
+# 2: ./scripts/train_alan.sh train 0 1 s nr 2 48 ms 5e-4 useStageRes no NN ACB 31 BN bicubic 0 0 no SmoothL1
+# 2: ./scripts/train_alan.sh train 0 1 s nr 2 48 ms 5e-4 useStageRes no NN ACB 39 BN bicubic 0 0 no SmoothL1
+# 2: ./scripts/train_alan.sh train 0 1 s nr 2 48 ms 5e-4 useStageRes no NN ACB 47 BN bicubic 0 0 no SmoothL1
+# 2: ./scripts/train_alan.sh train 0 1 s nr 2 48 ms 5e-4 useStageRes no NN ACB 55 BN bicubic 0 0 no SmoothL1
+# 3: ./scripts/train_alan.sh train 0 1 s_mlp2 nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# 4: ./scripts/train_alan.sh train 1 1 s_noAttn nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# 5: ./scripts/train_alan.sh train 0 1 s nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+# 6: ./scripts/train_alan.sh train 1 1 s nr 2 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no L1
+# 7: ./scripts/train_alan.sh train 0 1 s nr 2 48 ms 5e-4 useStageRes no NNnPA ACB 23 BN bicubic 0 0 no SmoothL1
 
 
 
@@ -47,34 +47,22 @@ n_device=`expr ${#device} / 2 + 1`
 accum=$3
 # forth is model size
 size=$4
-# ############## model_large #############
-if [ $size = "l" ]; then
-  options="--epochs 1000 --decay 500-800-900-950 --srarn_up_feat 180 --depths 8+8+8+8+8+8+8+8+8+8 --dims 180+180+180+180+180+180+180+180+180+180 --mlp_ratios 4+4+4+4+4+4+4+4+4+4 --batch_size 32"
 # ############## model_base #############
-elif [ $size = "b" ]; then
-  options="--epochs 1000 --decay 500-800-900-950 --srarn_up_feat 180 --depths 6+6+6+6+6+6+6+6 --dims 180+180+180+180+180+180+180+180 --mlp_ratios 4+4+4+4+4+4+4+4 --batch_size 32"
+if [ $size = "b" ]; then
+  options="--epochs 1500 --decay 750-1200-1350-1425 --srarn_up_feat 60 --depths 6+6+6+6 --dims 60+60+60+60 --mlp_ratios 4+4+4+4 --batch_size 32"
 # ############## model_small #############
 elif [ $size = "s" ]; then
-  options="--epochs 1500 --decay 750-1200-1350-1425 --srarn_up_feat 60 --depths 6+6+6+6+6 --dims 60+60+60+60+60 --mlp_ratios 4+4+4+4+4 --batch_size 32"
-elif [ $size = "xs" ]; then
-  options="--epochs 1500 --decay 750-1200-1350-1425 --srarn_up_feat 60 --depths 6+6+6+6 --dims 60+60+60+60 --mlp_ratios 4+4+4+4 --batch_size 32"
-elif [ $size = "xs4" ]; then
-  options="--epochs 1500 --decay 750-1200-1350-1425 --srarn_up_feat 64 --depths 6+6+6+6 --dims 64+64+64+64 --mlp_ratios 4+4+4+4 --batch_size 32"
+  options="--epochs 2000 --decay 1000-1600-1800-1900 --srarn_up_feat 42 --depths 6+6+6 --dims 42+42+42 --mlp_ratios 4+4+4 --batch_size 32"
+elif [ $size = "s_mlp2" ]; then
+  options="--epochs 2000 --decay 1000-1600-1800-1900 --srarn_up_feat 42 --depths 6+6+6 --dims 42+42+42 --mlp_ratios 2+2+2 --batch_size 32"
+elif [ $size = "s_noAttn" ]; then
+  options="--epochs 2000 --decay 1000-1600-1800-1900 --srarn_up_feat 42 --depths 6+6+6 --dims 42+42+42 --mlp_ratios 4+4+4 --batch_size 32 --no_attn"
 # ############## model_tiny #############
 elif [ $size = "t" ]; then
-  options="--epochs 2000 --decay 1000-1600-1800-1900 --srarn_up_feat 42 --depths 6+6+6 --dims 42+42+42 --mlp_ratios 4+4+4 --batch_size 32"
-elif [ $size = "t_mlp2" ]; then
-  options="--epochs 2000 --decay 1000-1600-1800-1900 --srarn_up_feat 42 --depths 6+6+6 --dims 42+42+42 --mlp_ratios 2+2+2 --batch_size 32"
-elif [ $size = "t_noAttn" ]; then
-  options="--epochs 2000 --decay 1000-1600-1800-1900 --srarn_up_feat 42 --depths 6+6+6 --dims 42+42+42 --mlp_ratios 4+4+4 --batch_size 32 --no_attn"
-elif [ $size = "t4" ]; then
-  options="--epochs 2000 --decay 1000-1600-1800-1900 --srarn_up_feat 48 --depths 6+6+6 --dims 48+48+48 --mlp_ratios 4+4+4 --batch_size 32"
-# ############## model_xt extremely tiny #############
-elif [ $size = "xt" ]; then
   options="--epochs 3000 --decay 1500-2400-2700-2850 --srarn_up_feat 24 --depths 6+6 --dims 24+24 --mlp_ratios 4+4 --batch_size 32"
-elif [ $size = "xt_mlp2" ]; then
+elif [ $size = "t_mlp2" ]; then
   options="--epochs 3000 --decay 1500-2400-2700-2850 --srarn_up_feat 24 --depths 6+6 --dims 24+24 --mlp_ratios 2+2 --batch_size 32"
-elif [ $size = "xt_noAttn" ]; then
+elif [ $size = "t_noAttn" ]; then
   options="--epochs 3000 --decay 1500-2400-2700-2850 --srarn_up_feat 24 --depths 6+6 --dims 24+24 --mlp_ratios 4+4 --batch_size 32 --no_attn"
 # ############## test_model #############
 elif [ $size = "test" ]; then  # test with lower costs
