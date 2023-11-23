@@ -1,20 +1,10 @@
-**About PyTorch 1.2.0**
-  * Now the master branch supports PyTorch 1.2.0 by default.
-  * Due to the serious version problem (especially torch.utils.data.dataloader), MDSR functions are temporarily disabled. If you have to train/evaluate the MDSR model, please use legacy branches.
+# ALAN
 
-# EDSR-PyTorch
-
-**About PyTorch 1.1.0**
-  * There have been minor changes with the 1.1.0 update. Now we support PyTorch 1.1.0 by default, and please use the legacy branch if you prefer older version.
-
-![](/figs/main.png)
-
-This repository is an official PyTorch implementation of the paper **"Enhanced Deep Residual Networks for Single Image Super-Resolution"** from **CVPRW 2017, 2nd NTIRE**.
-You can find the original code and more information from [here](https://github.com/LimBee/NTIRE2017).
+This repository is an official PyTorch implementation of the paper **"ALAN: Self-Attention is Not All You Need for Image Super-Resolution"** from **IEEE SP-Letter**.
 
 If you find our work useful in your research or publication, please cite our work:
-
-[1] Bee Lim, Sanghyun Son, Heewon Kim, Seungjun Nah, and Kyoung Mu Lee, **"Enhanced Deep Residual Networks for Single Image Super-Resolution,"** <i>2nd NTIRE: New Trends in Image Restoration and Enhancement workshop and challenge on image super-resolution in conjunction with **CVPR 2017**. </i> [[PDF](http://openaccess.thecvf.com/content_cvpr_2017_workshops/w12/papers/Lim_Enhanced_Deep_Residual_CVPR_2017_paper.pdf)] [[arXiv](https://arxiv.org/abs/1707.02921)] [[Slide](https://cv.snu.ac.kr/research/EDSR/Presentation_v3(release).pptx)]
+(waiting for public)
+<!-- [1] Bee Lim, Sanghyun Son, Heewon Kim, Seungjun Nah, and Kyoung Mu Lee, **"Enhanced Deep Residual Networks for Single Image Super-Resolution,"** <i>2nd NTIRE: New Trends in Image Restoration and Enhancement workshop and challenge on image super-resolution in conjunction with **CVPR 2017**. </i> [[PDF](http://openaccess.thecvf.com/content_cvpr_2017_workshops/w12/papers/Lim_Enhanced_Deep_Residual_CVPR_2017_paper.pdf)] [[arXiv](https://arxiv.org/abs/1707.02921)] [[Slide](https://cv.snu.ac.kr/research/EDSR/Presentation_v3(release).pptx)]
 ```
 @InProceedings{Lim_2017_CVPR_Workshops,
   author = {Lim, Bee and Son, Sanghyun and Kim, Heewon and Nah, Seungjun and Lee, Kyoung Mu},
@@ -23,15 +13,12 @@ If you find our work useful in your research or publication, please cite our wor
   month = {July},
   year = {2017}
 }
-```
+``` -->
 We provide scripts for reproducing all the results from our paper. You can train your model from scratch, or use a pre-trained model to enlarge your images.
 
-**Differences between Torch version**
-* Codes are much more compact. (Removed all unnecessary parts.)
-* Models are smaller. (About half.)
-* Slightly better performances.
-* Training and evaluation requires less memory.
-* Python-based.
+
+> Vision Transformer (ViT)-based image super-resolution (SR) methods have achieved impressive performance and surpassed CNN-based SR methods by utilizing Multi-Head Self-Attention (MHSA) to model long-range dependencies. However, the quadratic complexity of MHSA and the inefficiency of non-parallelized window partition seriously affect the inference speed, hindering these SR methods from being applied to application scenarios requiring speed and quality. To address this issue, we propose an Asymmetric Large-kernel Attention Network (ALAN) utilizing a stage-to-block design paradigm inspired by ViT. In the ALAN, the core block named Asymmetric Large Kernel Convolution Block (ALKCB) adopts a similar structure to the Swin Transformer Layer but replaces the MHSA with our proposed Asymmetric Depth-Wise Convolution Attention (ADWCA) to enhance both the SR quality and inference speed. The proposed ADWCA, with linear complexity, uses large kernel depth-wise dilation convolution and Hadamard product as the attention map. The structural re-parameterization technique to strengthen the kernel skeletons with asymmetric convolution is also explored. Experimental results demonstrate that ALAN achieves state-of-the-art performance with faster inference speed than ViT-based models and smaller parameters than CNN-based models. Specifically, the tiny size of ALAN (ALAN-T) is $3\times$ smaller than ShuffleMixer with similar performance, and ALAN is $4\times$ faster than SwinIR-S with 0.1dB gain in PSNR.
+
 
 ## Dependencies
 * Python 3.6
@@ -52,14 +39,14 @@ We provide scripts for reproducing all the results from our paper. You can train
 ## Code
 - Clone this repository into any place you want.
 ```bash
-git clone https://github.com/qpchen/EDSR-PyTorch
-cd EDSR-PyTorch
+git clone https://github.com/qpchen/ALAN
+cd ALAN
 ```
 
 - Create a conda virtual environment and activate it:
 ``` bash
-conda create -n dcan python=3.9 -y
-conda activate dcan
+conda create -n alan python=3.9 -y
+conda activate alan
 ```
 
 - Install `CUDA>=10.2` with `cudnn>=7` following
@@ -85,7 +72,7 @@ pip install timm==0.6.11 mmdet==2.28.1
 pip install opencv-python termcolor yacs pyyaml scipy scikit-image imageio matplotlib tqdm torchinfo thop pytorch_wavelets
 ```
 
-- Compiling CUDA operators
+<!-- - Compiling CUDA operators
 ```bash
 cd ./src/model/ops_dcnv3
 sh ./make.sh
@@ -94,7 +81,8 @@ python test.py
 cd ../../..
 ```
 - You can also install the operator using .whl files
-[DCNv3-1.0-whl](https://github.com/OpenGVLab/InternImage/releases/tag/whl_files)
+[DCNv3-1.0-whl](https://github.com/OpenGVLab/InternImage/releases/tag/whl_files) -->
+
 ### Data Preparation
 
 ## Quickstart (Demo)
@@ -102,29 +90,11 @@ You can test our super-resolution algorithm with your images. Place your images 
 
 Run the script in ``src`` folder. Before you run the demo, please uncomment the appropriate line in ```demo.sh``` that you want to execute.
 ```bash
-cd src       # You are now in */EDSR-PyTorch/src
+cd src       # You are now in */ALAN/src
 sh demo.sh
 ```
 
 You can find the result images from ```experiment/test/results``` folder.
-
-| Model | Scale | File name (.pt) | Parameters | ****PSNR** |
-|  ---  |  ---  | ---       | ---        | ---  |
-| **EDSR** | 2 | EDSR_baseline_x2 | 1.37 M | 34.61 dB |
-| | | *EDSR_x2 | 40.7 M | 35.03 dB |
-| | 3 | EDSR_baseline_x3 | 1.55 M | 30.92 dB |
-| | | *EDSR_x3 | 43.7 M | 31.26 dB |
-| | 4 | EDSR_baseline_x4 | 1.52 M | 28.95 dB |
-| | | *EDSR_x4 | 43.1 M | 29.25 dB |
-| **MDSR** | 2 | MDSR_baseline | 3.23 M | 34.63 dB |
-| | | *MDSR | 7.95 M| 34.92 dB |
-| | 3 | MDSR_baseline | | 30.94 dB |
-| | | *MDSR | | 31.22 dB |
-| | 4 | MDSR_baseline | | 28.97 dB |
-| | | *MDSR | | 29.24 dB |
-
-*Baseline models are in ``experiment/model``. Please download our final models from [here](https://cv.snu.ac.kr/research/EDSR/model_pytorch.tar) (542MB)
-**We measured PSNR using DIV2K 0801 ~ 0900, RGB channels, without self-ensemble. (scale + 2) pixels from the image boundary are ignored.
 
 You can evaluate your models with widely-used benchmark datasets:
 
@@ -136,13 +106,9 @@ You can evaluate your models with widely-used benchmark datasets:
 
 [Urban100 - Huang et al. CVPR 2015](https://sites.google.com/site/jbhuang0604/publications/struct_sr).
 
-For these datasets, we first convert the result images to YCbCr color space and evaluate PSNR on the Y channel only. You can download [benchmark datasets](https://cv.snu.ac.kr/research/EDSR/benchmark.tar) (250MB). Set ``--dir_data <where_benchmark_folder_located>`` to evaluate the EDSR and MDSR with the benchmarks.
+For these datasets, we first convert the result images to YCbCr color space and evaluate PSNR on the Y channel only. You can download [benchmark datasets](https://cv.snu.ac.kr/research/EDSR/benchmark.tar) (250MB). Set ``--dir_data <where_benchmark_folder_located>`` to evaluate the ALAN with the benchmarks.
 
-You can download some results from [here](https://cv.snu.ac.kr/research/EDSR/result_image/edsr-results.tar).
-The link contains **EDSR+_baseline_x4** and **EDSR+_x4**.
-Otherwise, you can easily generate result images with ``demo.sh`` scripts.
-
-## How to train EDSR and MDSR
+## How to train ALAN
 We used [DIV2K](http://www.vision.ee.ethz.ch/%7Etimofter/publications/Agustsson-CVPRW-2017.pdf) dataset to train our model. Please download it from [here](https://cv.snu.ac.kr/research/EDSR/DIV2K.tar) (7.1GB).
 
 Unpack the tar file to any place you want. Then, change the ```dir_data``` argument in ```src/option.py``` to the place where DIV2K images are located.
@@ -151,83 +117,34 @@ We recommend you to pre-process the images before training. This step will decod
 
 If you have enough RAM (>= 32GB), you can use ``--ext bin`` argument to pack all DIV2K images in one binary file.
 
-You can train EDSR and MDSR by yourself. All scripts are provided in the ``src/demo.sh``. Note that EDSR (x3, x4) requires pre-trained EDSR (x2). You can ignore this constraint by removing ```--pre_train <x2 model>``` argument.
+You can train ALAN by yourself. All scripts are provided in the ``src/scripts/train_alan.sh``. 
 
 ```bash
-cd src       # You are now in */EDSR-PyTorch/src
-sh demo.sh
+cd src       # You are now in */ALAN/src
+./scripts/train_alan.sh train 0 1 xs nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
 ```
 
-**Update log**
-* Jan 04, 2018
-  * Many parts are re-written. You cannot use previous scripts and models directly.
-  * Pre-trained MDSR is temporarily disabled.
-  * Training details are included.
+Then, you can evaluate the trained model by first switch the ACB block to the conventional convolutional block.
 
-* Jan 09, 2018
-  * Missing files are included (```src/data/MyImage.py```).
-  * Some links are fixed.
+```bash
+./scripts/train_alan.sh switch 0 1 xs nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+./scripts/train_alan.sh eval 0 1 xs nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+```
 
-* Jan 16, 2018
-  * Memory efficient forward function is implemented.
-  * Add --chop_forward argument to your script to enable it.
-  * Basically, this function first split a large image to small patches. Those images are merged after super-resolution. I checked this function with 12GB memory, 4000 x 2000 input image in scale 4. (Therefore, the output will be 16000 x 8000.)
+You can also do lam analysis for the scale 4 models.
 
-* Feb 21, 2018
-  * Fixed the problem when loading pre-trained multi-GPU model.
-  * Added pre-trained scale 2 baseline model.
-  * This code now only saves the best-performing model by default. For MDSR, 'the best' can be ambiguous. Use --save_models argument to keep all the intermediate models.
-  * PyTorch 0.3.1 changed their implementation of DataLoader function. Therefore, I also changed my implementation of MSDataLoader. You can find it on feature/dataloader branch.
+```bash
+./scripts/train_alan.sh lam 0 1 xs nr 4 48 ms 5e-4 useStageRes no NN ACB 23 BN bicubic 0 0 no SmoothL1
+```
 
-* Feb 23, 2018
-  * Now PyTorch 0.3.1 is a default. Use legacy/0.3.0 branch if you use the old version.
-  * With a new ``src/data/DIV2K.py`` code, one can easily create new data class for super-resolution.
-  * New binary data pack. (Please remove the ``DIV2K_decoded`` folder from your dataset if you have.)
-  * With ``--ext bin``, this code will automatically generate and saves the binary data pack that corresponds to previous ``DIV2K_decoded``. (This requires huge RAM (~45GB, Swap can be used.), so please be careful.)
-  * If you cannot make the binary pack, use the default setting (``--ext img``).
+## Citation
+    @article{chen2023alan,
+      title={ALAN: Self-Attention is Not All You Need for Image Super-Resolution},
+      author={Chen, Qiangpu and Qin, Jinghui and Wen, Wushao},
+      journal={IEEE SPL},
+      year={2023}
+    }
 
-  * Fixed a bug that PSNR in the log and PSNR calculated from the saved images does not match.
-  * Now saved images have better quality! (PSNR is ~0.1dB higher than the original code.)
-  * Added performance comparison between Torch7 model and PyTorch models.
 
-* Mar 5, 2018
-  * All baseline models are uploaded.
-  * Now supports half-precision at test time. Use ``--precision half``  to enable it. This does not degrade the output images.
-
-* Mar 11, 2018
-  * Fixed some typos in the code and script.
-  * Now --ext img is default setting. Although we recommend you to use --ext bin when training, please use --ext img when you use --test_only.
-  * Skip_batch operation is implemented. Use --skip_threshold argument to skip the batch that you want to ignore. Although this function is not exactly the same with that of Torch7 version, it will work as you expected.
-
-* Mar 20, 2018
-  * Use ``--ext sep-reset`` to pre-decode large png files. Those decoded files will be saved to the same directory with DIV2K png files. After the first run, you can use ``--ext sep`` to save time.
-  * Now supports various benchmark datasets. For example, try ``--data_test Set5`` to test your model on the Set5 images.
-  * Changed the behavior of skip_batch.
-
-* Mar 29, 2018
-  * We now provide all models from our paper.
-  * We also provide ``MDSR_baseline_jpeg`` model that suppresses JPEG artifacts in the original low-resolution image. Please use it if you have any trouble.
-  * ``MyImage`` dataset is changed to ``Demo`` dataset. Also, it works more efficient than before.
-  * Some codes and script are re-written.
-
-* Apr 9, 2018
-  * VGG and Adversarial loss is implemented based on [SRGAN](http://openaccess.thecvf.com/content_cvpr_2017/papers/Ledig_Photo-Realistic_Single_Image_CVPR_2017_paper.pdf). [WGAN](https://arxiv.org/abs/1701.07875) and [gradient penalty](https://arxiv.org/abs/1704.00028) are also implemented, but they are not tested yet.
-  * Many codes are refactored. If there exists a bug, please report it.
-  * [D-DBPN](https://arxiv.org/abs/1803.02735) is implemented. The default setting is D-DBPN-L.
-
-* Apr 26, 2018
-  * Compatible with PyTorch 0.4.0
-  * Please use the legacy/0.3.1 branch if you are using the old version of PyTorch.
-  * Minor bug fixes
-
-* July 22, 2018
-  * Thanks for recent commits that contains RDN and RCAN. Please see ``code/demo.sh`` to train/test those models.
-  * Now the dataloader is much stable than the previous version. Please erase ``DIV2K/bin`` folder that is created before this commit. Also, please avoid using ``--ext bin`` argument. Our code will automatically pre-decode png images before training. If you do not have enough spaces(~10GB) in your disk, we recommend ``--ext img``(But SLOW!).
-
-* Oct 18, 2018
-  * with ``--pre_train download``, pretrained models will be automatically downloaded from the server.
-  * Supports video input/output (inference only). Try with ``--data_test video --dir_demo [video file directory]``.
-
-* About PyTorch 1.0.0
-  * We support PyTorch 1.0.0. If you prefer the previous versions of PyTorch, use legacy branches.
-  * ``--ext bin`` is not supported. Also, please erase your bin files with ``--ext sep-reset``. Once you successfully build those bin files, you can remove ``-reset`` from the argument.
+## License and Acknowledgement
+This project is released under the MIT license. The basic framework codes are based on [EDSR](https://github.com/sanghyun-son/EDSR-PyTorch). The LAM analysis, ACB, and DBB codes are based on [FriedRiceLab](https://github.com/Fried-Rice-Lab/FriedRiceLab), [ACNet](https://github.com/DingXiaoH/ACNet), and [DiverseBranchBlock](https://github.com/DingXiaoH/DiverseBranchBlock), respectively. Please also follow their licenses. Thanks for their awesome works.
