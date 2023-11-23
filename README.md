@@ -1,6 +1,6 @@
 # ALAN
 
-This repository is an official PyTorch implementation of the paper **"ALAN: Self-Attention is Not All You Need for Image Super-Resolution"** from **IEEE SP-Letter**.
+This repository is an official PyTorch implementation of the paper **"ALAN: Self-Attention is Not All You Need for Image Super-Resolution"** from **IEEE SP-Letter** ([pretrained models](https://github.com/qpchen/ALAN/releases), [visual results](https://github.com/qpchen/ALAN/releases)).
 
 <!-- If you find our work useful in your research or publication, please cite our work:
 
@@ -15,8 +15,6 @@ This repository is an official PyTorch implementation of the paper **"ALAN: Self
 }
 ``` -->
 We provide scripts for reproducing all the results from our paper. You can train your model from scratch, or use a pre-trained model to enlarge your images.
-
----
 
 ![Visual comparisons of the efficient state-of-the-art models on Urban100 benchmark datasets for 4x SR. The proposed ALAN family reconstructs clean and sharp details.](figs/visual_compare.png)
 
