@@ -153,7 +153,7 @@ You can also do lam analysis for the scale 4 models.
     @article{chen2023alan,
       title={ALAN: Self-Attention is Not All You Need for Image Super-Resolution},
       author={Chen, Qiangpu and Qin, Jinghui and Wen, Wushao},
-      journal={IEEE SPL},
+      journal={IEEE Signal Processing Letters},
       year={2023}
     }
 
