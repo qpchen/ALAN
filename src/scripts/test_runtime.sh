@@ -98,7 +98,7 @@ elif [ $model = "RCAN" ]; then
 elif [ $model = "ShuffleMixer" ]; then
   python main.py --n_threads 6 --scale $3 --patch_size $patch --data_test 720P --n_colors 3 $dim_configs --model ShuffleMixer --save ../runtime_models/logs/ShuffleMixer-$2_x$3 --pre_train ../runtime_models/shufflemixer_$2_x$3.pth --test_only --reset --runtime --times $5 $6 #--no_count --save_result 
 elif [ $model = "ALAN" ]; then
-  python main.py --n_threads 6 --scale $3 --patch_size $patch --data_test 720P --n_colors 3 $dim_configs --model RAAN --interpolation Nearest --acb_norm batch --upsampling Nearest --use_acb --save ../runtime_models/logs/alan_$2_x$3 --pre_train ../runtime_models/alan_$2_x$3.pt --test_only --load_inf --reset --runtime --times $5 $6 #--no_count --save_result 
+  python main.py --n_threads 6 --scale $3 --patch_size $patch --data_test 720P --n_colors 3 $dim_configs --model ALAN --interpolation Nearest --acb_norm batch --upsampling Nearest --use_acb --save ../runtime_models/logs/alan_$2_x$3 --pre_train ../runtime_models/alan_$2_x$3.pt --test_only --load_inf --reset --runtime --times $5 $6 #--no_count --save_result 
 elif [ $model = "DCANV1" ]; then
   python main.py --n_threads 6 --scale $3 --patch_size $patch --data_test 720P --n_colors 3 $dim_configs --model DCAN --interpolation Nearest --acb_norm no --stage_res --upsampling Nearest --bb_norm BN --degradation bicubic --sigma 0 --quality 0 --pre_train ../runtime_models/dcanv1_$2_x$3.pt --save ../runtime_models/logs/dcanv1_$2_x$3 --test_only --load_inf --reset --runtime --times $5 $6 #--no_count --save_result 
 elif [ $model = "DCANV2" ]; then
