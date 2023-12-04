@@ -1,6 +1,6 @@
 # ALAN
 
-This repository is an official PyTorch implementation of the paper **"ALAN: Self-Attention is Not All You Need for Image Super-Resolution"** from **IEEE Signal Processing Letters** ([pretrained models](https://github.com/qpchen/ALAN/releases), [visual results](https://github.com/qpchen/ALAN/releases)).
+This repository is an official PyTorch implementation of the paper **"ALAN: Self-Attention is Not All You Need for Image Super-Resolution"** from **IEEE Signal Processing Letters** ([paper](https://ieeexplore.ieee.org/document/10333996), [pretrained models](https://github.com/qpchen/ALAN/releases), [visual results](https://github.com/qpchen/ALAN/releases)).
 
 <!-- If you find our work useful in your research or publication, please cite our work:
 
