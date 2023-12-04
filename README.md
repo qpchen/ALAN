@@ -24,6 +24,8 @@ We provide scripts for reproducing all the results from our paper. You can train
 
 ![Illustration of the proposed Asymmetric Large-kernel Attention Network (ALAN) architecture](figs/overview.png)
 
+![](figs/perform_compare.png)
+
 ## Dependencies
 * Python 3.6
 * PyTorch >= 1.10.0
